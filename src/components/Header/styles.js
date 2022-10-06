@@ -1,57 +1,63 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
-export const Container = styled.header`
-    grid-area: header;
+export const Container = styled.div`
+  grid-area: header;
+  width: 100%;
+  height: 11.6rem;
+  
+  display: flex;
+  align-items: center;
+  
+  gap: 6.4rem;
 
-    height: 105px;
-    width: 100%;
+  padding: 0 clamp(8px, 1.0rem + 5vw, 12.3rem);
 
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: ${({theme}) => theme.COLORS.BACKGROUND_700};
+  border-bottom: 1px solid ${({theme}) => theme.COLORS.BACKGROUND_700};
 
-    display: inline-flex;
-    justify-content: space-between;
+  > h1 {
+    color: ${({ theme }) => theme.COLORS.PINK_100};
+    font-size: clamp(1.0rem, 1.0rem + 1vw, 2.0rem);
+  }
 
-    padding: 0 80px;
-`;
-
-export const Profile = styled(Link)`
+  > div {
     display: flex;
     align-items: center;
 
-    > img {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
+    gap: 9px;
+  }
+
+  > div div {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    align-items: end;
+  }
+
+  > div img {
+    width: 6.4rem;
+    height: 6.4rem;
+    border-radius: 50%;
+    border: 3px solid ${({ theme }) => theme.COLORS.BACKGROUND_700};
+  }
+
+  > div div button {
+    &:focus {
+      outline: none;
     }
+  }
+
+  @media (max-width: 650px) {
+    padding-right: 0;
+    gap: 1.4rem;
 
     > div {
-        display: flex;
-        flex-direction: column;
-        margin-left: 16px;
-        line-height: 24px;
-
-        span {
-            font-size: 14px;
-            color: ${({ theme }) => theme.COLORS.GRAY_100};            
-        }
-
-        strong {
-            font-size: 18px;
-            color: ${({ theme }) => theme.COLORS.WHITE};            
-        }
+      gap: 0;
     }
 
-`;
-
-export const Loggout = styled.button`
-    border: none;
-    background: none;
-
-    > svg {
-        color: ${({ theme }) => theme.COLORS.GRAY_100};
-        font-size: 36px;
+    > div img {
+      border-radius: 50% 0 0 50%;
+      border-right: none; 
     }
+
+  }
 `;
